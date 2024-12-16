@@ -1,0 +1,25 @@
+syntax = "proto3";
+option java_package ="org.isd.stubs";
+
+message ConsultRequest {
+  string dateDebut = 1;
+  string dateFin = 2;
+  int32 nbPersonne = 3;
+
+}
+
+message OffreDiponible {
+  int32  idOffre = 1;
+  int32  typeChambre = 2;
+  string dateDisponibilite = 3;
+  double prix = 4;
+  string imageUrl = 5;
+}
+
+message ConsultResponse {
+  repeated OffreDiponible offres = 1;
+}
+
+service HotelServiceConsulter {
+  rpc consulterDisponibilites (ConsultRequest) returns (ConsultResponse);
+}

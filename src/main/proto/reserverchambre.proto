@@ -1,0 +1,24 @@
+syntax = "proto3";
+option java_package ="org.isd.stubs";
+
+
+message  ReserverRequest {
+  int32 idOffre = 1;
+  string prenom = 2;
+  string nom = 3;
+  string email = 4;
+}
+
+message ReservationResponse {
+  bool success = 1;
+  string message = 2;
+  string reservationReference = 3;
+}
+
+message ReserverResponse {
+  ReservationResponse reservationReservation = 1;
+}
+
+service HotelServiceReserver {
+  rpc effectuerReservation (ReserverRequest) returns (ReserverResponse);
+}
